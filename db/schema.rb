@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519174423) do
+ActiveRecord::Schema.define(version: 20160520190630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,14 @@ ActiveRecord::Schema.define(version: 20160519174423) do
   add_index "body_inputs", ["user_id"], name: "index_body_inputs_on_user_id", unique: true, using: :btree
 
   create_table "exercises", force: :cascade do |t|
-    t.string "level",     default: "", null: false
-    t.string "exercise",  default: "", null: false
-    t.string "body_part", default: "", null: false
+    t.string   "level",                default: "", null: false
+    t.string   "exercise",             default: "", null: false
+    t.string   "body_part",            default: "", null: false
+    t.string   "description",          default: "", null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "lift_metrics", force: :cascade do |t|
@@ -41,12 +46,16 @@ ActiveRecord::Schema.define(version: 20160519174423) do
   add_index "lift_metrics", ["user_id"], name: "index_lift_metrics_on_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name", default: "", null: false
-    t.string   "last_name",  default: "", null: false
-    t.string   "email",      default: "", null: false
-    t.string   "role",       default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "first_name",          default: "", null: false
+    t.string   "last_name",           default: "", null: false
+    t.string   "email",               default: "", null: false
+    t.string   "role",                default: "", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

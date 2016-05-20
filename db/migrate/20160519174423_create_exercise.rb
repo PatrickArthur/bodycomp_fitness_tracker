@@ -4,6 +4,7 @@ class CreateExercise < ActiveRecord::Migration
        t.string :level, null: false, default: ""
        t.string :exercise, null: false, default: ""
        t.string :body_part, null: false, default: ""
+       t.string :description, null: false, default: ""
     end
   end
 end
